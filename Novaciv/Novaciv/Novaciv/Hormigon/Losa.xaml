@@ -1,230 +1,205 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Predimensionamiento de Losa alivianada"
              x:Class="Novaciv.Hormigon.Losa">
     <ContentPage.Content>
 
         <ScrollView>
             <StackLayout BackgroundColor="White">
 
-                <!-- Titulo de la pagina-->
-                <Frame BackgroundColor="#0984e3" 
-                   Padding="5" 
-                   CornerRadius="0">
-                    <Label Text="Predimensionamiento de Losa alivianada" 
-                       HorizontalTextAlignment="Center" 
-                       TextColor="White" 
-                       FontSize="30"
-                       FontAttributes="Bold"/>
-                </Frame>
                 <!-- imagen de referencia-->
                 <Image Source="pnlcrit.png"/>
-                <TableView HorizontalOptions="Center" 
-                           VerticalOptions="Center"
-                           BackgroundColor="#215170"
-                           Margin=" 5,0,5,0"
-                           HeightRequest="100">
-                    <TableRoot>
-                        <TableSection Title="Datos Arquitectonicos" 
-                                          TextColor="#6095BB">
-                            <!--longitud Entre ejes-->
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal">
-                                    <!--Longitud Larga-->
-                                    <Label Text="Longitud larga (Ls)-m-" 
-                                           FontSize=" 15"
-                                           FontAttributes="Bold"
-                                           WidthRequest="110"/>
-                                    <Entry Placeholder="0.00" 
-                                           x:Name="Lns"
-                                           Keyboard="Numeric"
-                                           WidthRequest="60"/>
-                                    <!--Longitud Larga-->
-                                    <Label Text="Longitud Corta (Lc)-m- " 
-                                           FontSize=" 15"
-                                           FontAttributes="Bold"
-                                           WidthRequest="110"/>
-                                    <Entry Placeholder ="0.00"
-                                           x:Name="Lnc"
-                                           Keyboard="Numeric"
-                                           WidthRequest="60"/>
-                                </StackLayout>
-                            </ViewCell>
-                        </TableSection>
-                    </TableRoot>
-                </TableView>
-                
+
+                <StackLayout BackgroundColor="#6095bb" Spacing="1" Padding="1" Margin="10,0,10,0" HorizontalOptions="FillAndExpand">
+                    <StackLayout Padding="10" Spacing="0" BackgroundColor="#6095bb">
+                        <Label Text="Datos Arquitectonicos" FontAttributes="Bold" TextColor="White" FontSize="14" />
+                    </StackLayout>
+                    <StackLayout Spacing="0" BackgroundColor="White">
+                        <StackLayout Padding="10" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <Label Text="Longitud larga (Ls)-m-" FontSize=" 15" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                            <Entry Placeholder="0.00"  x:Name="Lns" Keyboard="Numeric" WidthRequest="60" VerticalOptions="Center"/>
+                        </StackLayout>
+                        <StackLayout  Padding="10" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <Label Text="Longitud Corta (Lc)-m- " FontSize=" 15" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                            <Entry Placeholder ="0.00" x:Name="Lnc"  Keyboard="Numeric" WidthRequest="60" VerticalOptions="Center"/>
+                        </StackLayout>
+                    </StackLayout>
+
+                </StackLayout>
+
+
                 <!-- titulo de datos ingresados para losa alivianda e imagen referencia-->
-                <Frame BackgroundColor="#9EAAB4" Padding="5" CornerRadius="0">
-                    <Label Text="Losa alivianda" 
-                           HorizontalTextAlignment="Center"   
-                           TextColor="White" 
-                           FontSize="15"
-                           FontAttributes="Bold"/>
+                <Frame BackgroundColor="#6095bb" Padding="5" Margin="10,10,10,0" CornerRadius="0" HasShadow="False">
+                    <Label Text="Losa alivianda" HorizontalTextAlignment="Center" TextColor="White" FontSize="15" FontAttributes="Bold"/>
                 </Frame>
-                <Image Source="dlosaliv.png"/>
+                <Image Source="dlosaliv.png" Margin="10,0,10,0"/>
                 <!-- Dimensiones del alivianamiento-->
-                <TableView HorizontalOptions="Center" 
-                           VerticalOptions="Center"
-                           BackgroundColor="#215170"
-                           Margin=" 5,0,5,0"
-                           HeightRequest="900">
-                    <TableRoot>
-                        <TableSection Title="Datos Arquitectonicos" 
-                                          TextColor="#6095BB">
-                            <!--longitud Entre ejes-->
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal">
-                                <Label Text=" Dimensiones del aliviananmieto: "
-                                       FontAttributes="Bold"/>
-                                <Picker x:Name="Aliv" 
-                                        HorizontalOptions="Center" 
-                                        Title=" Seleccionar bloque"
-                                        SelectedIndexChanged="Aliv_SelectedIndexChanged">
+
+                <StackLayout BackgroundColor="#6095bb" Spacing="1" Padding="1" Margin="10,0,10,0" HorizontalOptions="FillAndExpand">
+                    <StackLayout Padding="10" Spacing="0" BackgroundColor="#6095bb">
+                        <Label Text="Datos Arquitectonicos" FontAttributes="Bold" TextColor="White" FontSize="14" />
+                    </StackLayout>
+                    <StackLayout Spacing="0" BackgroundColor="White">
+                        <StackLayout Margin="10" Orientation="Horizontal">
+                            <Label Text=" Dimensiones del aliviananmieto: " FontAttributes="Bold" HorizontalTextAlignment="Start"/>
+                            <Picker x:Name="Aliv" HorizontalOptions="Center" Title=" Seleccionar bloque" SelectedIndexChanged="Aliv_SelectedIndexChanged">
+                                <Picker.ItemsSource >
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>40x20x10 (cm)</x:String>
+                                        <x:String>40x20x15 (cm)</x:String>
+                                        <x:String>40x20x20 (cm)</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </StackLayout>
+
+                        <StackLayout Padding="8" Spacing="0" BackgroundColor="#6095bb" HorizontalOptions="FillAndExpand">
+                            <Label Text="Datos del aliviananmieto" TextColor="White" FontSize="14" />
+                        </StackLayout>
+
+                        <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
+                            <!-- Altura del bloque hb-->
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Text="Altura de bloque -hb- (cm)" FontSize="15" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                                <Entry Placeholder="0.00" FontSize="15" x:Name="hb" IsEnabled="False" WidthRequest="70"/>
+                            </StackLayout>
+
+                            <!-- ancho del bloque bb-->
+                            <StackLayout Margin="0,10,0,0" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Text="Ancho de Bloque -bb- (cm)" FontSize="15" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                                <Entry Placeholder="" FontSize="15" x:Name="bb" Text="40.00" IsEnabled="False" WidthRequest="70"/>
+                            </StackLayout>
+
+                            <!-- Tabla a compresión Tc-->
+                            <StackLayout Margin="0,10,0,0" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Text="Tabla a compresion -tc- (cm)"  FontSize="15" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                                <Entry Text=" 5.00" Placeholder="0.00" FontSize="15" x:Name="Tc" Keyboard="Numeric" Completed="Tc_Completed" WidthRequest="70"/>
+                            </StackLayout>
+
+                            <!-- Ancho del nervio Bn-->
+                            <StackLayout Margin="0,10,0,0" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Text="Ancho del nervio -bn- (cm)"  FontSize="15" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                                <Entry Text="10.00" Placeholder="0.00" FontSize="15" x:Name="Bn" Keyboard="Numeric" Completed="Bn_Completed" WidthRequest="70"/>
+                            </StackLayout>
+                        </StackLayout>
+
+                    </StackLayout>
+
+                </StackLayout>
+
+                <StackLayout BackgroundColor="#6095bb" Spacing="1" Padding="1" Margin="10,5,10,0" HorizontalOptions="FillAndExpand">
+                    <StackLayout Padding="10" Spacing="0" BackgroundColor="#6095bb">
+                        <Label Text="Chequeo de resultados" FontAttributes="Bold" TextColor="White" FontSize="14" />
+                    </StackLayout>
+                    <StackLayout Spacing="0" BackgroundColor="White">
+
+
+
+                        <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
+
+                            <Label Text="Chequeo nervio" x:Name="chknerv" />
+                            <!-- chequeo de loseta-->
+                            <Label  Text="Chequeo de loseta" x:Name="chklos"/>
+                            <!-- Chequeo de inercias-->
+                            <Label Text="Chequeo inercia"  x:Name="chkiner"/>
+
+                        </StackLayout>
+
+                    </StackLayout>
+
+                </StackLayout>
+
+
+                <StackLayout BackgroundColor="#6095bb" Spacing="1" Padding="1" Margin="10,5,10,0" HorizontalOptions="FillAndExpand">
+                    <StackLayout Padding="10" Spacing="0" BackgroundColor="#6095bb">
+                        <Label Text="Propiedades de losa Maciza" FontAttributes="Bold" TextColor="White" FontSize="14" />
+                    </StackLayout>
+                    <StackLayout Spacing="0" BackgroundColor="White">
+
+                        <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Text="Longitud de analisis -L- (cm)" FontSize="15" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                                <Label Text="0.00" FontSize="15" x:Name="lcalc" IsEnabled="False" />
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Text="Altura de Losa maciza -hmac- (cm)" FontSize="15" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                                <Label Text="0.00" FontSize="15" x:Name="hl" IsEnabled="False" />
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Text="Inercia de losa maciza (cm4)" FontSize="15" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                                <Label Text="0.00" FontSize="15" x:Name="inerl" IsEnabled="False" />
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout BackgroundColor="#6095bb" Spacing="1" Padding="1" Margin="10,5,10,0" HorizontalOptions="FillAndExpand">
+                    <StackLayout Padding="10" Spacing="0" BackgroundColor="#6095bb">
+                        <Label Text="Propiedades de losa Alivianada" FontAttributes="Bold" TextColor="White" FontSize="14" />
+                    </StackLayout>
+                    <StackLayout Spacing="0" BackgroundColor="White">
+
+                        <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Text="Altura losa alivianada -haliv- (cm)" FontSize="15" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                                <Label Text="0.00" FontSize="15" x:Name="h" IsEnabled="False" />
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Text="Inercia de losa Alivianada (cm4)" FontSize="15" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                                <Label Text="inercia (cm4)" FontSize="15" x:Name="ila" IsEnabled="False" />
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Text="Altura Equivalente -heq- (cm)" FontSize="15" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                                <Label Text="0.00" FontSize="15" x:Name="heq" IsEnabled="False" />
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout BackgroundColor="#6095bb" Spacing="1" Padding="1" Margin="10,5,10,0" HorizontalOptions="FillAndExpand">
+                    <StackLayout Padding="10" Spacing="0" BackgroundColor="#6095bb">
+                        <Label FontAttributes="Bold" Text="Peso de losa alivianda" TextColor="White" FontSize="14" />
+                    </StackLayout>
+                    <StackLayout Spacing="0" BackgroundColor="White">
+
+                        <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Text="Peso total de losa (t/m2) =" FontSize="15" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                                <Label Text="0.00" FontSize="15" x:Name="Wlosa" IsEnabled="False" />
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Text="Mamposteria (t/m2)" FontSize="15" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                                <Picker x:Name="Mampost"  HorizontalOptions="Center" Title="Seleccionar" SelectedIndexChanged="Mampost_SelectedIndexChanged">
                                     <Picker.ItemsSource >
                                         <x:Array Type="{x:Type x:String}">
-                                            <x:String>40x20x10 (cm)</x:String>
-                                            <x:String>40x20x15 (cm)</x:String>
-                                            <x:String>40x20x20 (cm)</x:String>
+                                            <x:String>Ladrillo</x:String>
+                                            <x:String>Bloque</x:String>
+                                            <x:String>Liviana</x:String>
+                                            <x:String>Sin Mamposteria</x:String>
+                                            <x:String>Ingresar</x:String>
                                         </x:Array>
                                     </Picker.ItemsSource>
                                 </Picker>
-                                </StackLayout>
-                            </ViewCell>
-                        </TableSection>
-                        <TableSection Title="Datos del Alivianamiento">
-                            <ViewCell >
-                                <StackLayout Orientation="Horizontal" >
-                                    <!-- Altura del bloque hb-->
-                                    <Label Text="Altura de bloque -hb- (cm)" 
-                                           FontSize="15"
-                                           FontAttributes="Bold" />
-                                    <Entry Placeholder="0.00"
-                                           FontSize="15" 
-                                           x:Name="hb"
-                                           IsEnabled="False"/>
-                                    <!-- ancho del bloque bb-->
-                                    <Label Text="Ancho de Bloque -bb- (cm)" 
-                                           FontSize="15"
-                                           FontAttributes="Bold" />
-                                    <Entry Placeholder=""
-                                           FontSize="15" 
-                                           x:Name="bb"
-                                           Text="40.00"
-                                           IsEnabled="False"/>
-                                </StackLayout>
-                            </ViewCell>
-                            <ViewCell >
-                                <StackLayout Orientation="Horizontal" >
-                                    <!-- Tabla a compresión Tc-->
-                                    <Label Text="Tabla a compresion -tc- (cm)" 
-                                           FontSize="15"
-                                           FontAttributes="Bold" />
-                                    <Entry Text=" 5.00" 
-                                           Placeholder="0.00" 
-                                           FontSize="15" 
-                                           x:Name="Tc"
-                                           Keyboard="Numeric"
-                                           Completed="Tc_Completed"/>
-                                    <!-- Ancho del nervio Bn-->
-                                    <Label Text="Ancho del nervio -bn- (cm)" 
-                                           FontSize="15"
-                                           FontAttributes="Bold" />
-                                    <Entry Text="10.00"
-                                           Placeholder="0.00" 
-                                           FontSize="15" 
-                                           x:Name="Bn"
-                                           Keyboard="Numeric" 
-                                           Completed="Bn_Completed"/>
-                                </StackLayout>
-                            </ViewCell>
-                        </TableSection>
-                        <!--tabla de chequeos de resultados-->
-                        <TableSection Title="Chequeo de resultados">
-                            <!-- chequeo de nervio-->
-                            <TextCell Text="Chequeo nervio"  
-                                      x:Name="chknerv" />
-                            <!-- chequeo de loseta-->
-                            <TextCell  Text="Chequeo de loseta"
-                                       x:Name="chklos"/>
-                            <!-- Chequeo de inercias-->
-                            <TextCell Text="Chequeo inercia" 
-                                      x:Name="chkiner"/>
-                        </TableSection>
-                        <TableSection Title="Propiedades de losa Maciza">
-                            <!--Longitud de analisis-->
-                            <EntryCell Label="Longitud de analisis -L- (cm) "    
-                                       Placeholder="0.00" 
-                                       x:Name="lcalc"
-                                       IsEnabled="False"/>                                       
-                                       
-                            <!-- altura de losa maciza-->
-                            <EntryCell Label="Altura de Losa maciza -hmac- (cm) "
-                                       Placeholder="0.00" 
-                                       x:Name="hl"
-                                       IsEnabled="False"/>
-                            <!--inercia de losa maciza-->
-                            <EntryCell Label="Inercia de losa maciza (cm4)"
-                                       Placeholder="inercia (cm4)" 
-                                       x:Name="inerl"
-                                       IsEnabled="False"/>
+                                <Entry Placeholder="0.00" x:Name="WMampost" IsEnabled="False" Completed="WMampost_Completed"/>
+                            </StackLayout>
 
-                        </TableSection>
-                        <TableSection Title="Propiedades de losa Alivianada">
-                            <!--Altura de losa alivianada-->
-                            <EntryCell Label="Altura losa alivianada -haliv- (cm)"
-                                       Placeholder="0.00" 
-                                       x:Name="h"
-                                       Keyboard="Numeric" 
-                                       IsEnabled="False"/>
-                            <!-- inercia lisa alivianada-->
-                            <EntryCell Label ="Inercia de losa Alivianada (cm4) "
-                                       Placeholder="inercia (cm4)"
-                                       x:Name="ila"
-                                       IsEnabled="False"/>
-                            <!--Altura equivalente-->
-                            <EntryCell Label="Altura Equivalente -heq- (cm)" 
-                                       Placeholder="0.00"                                   
-                                       x:Name="heq"
-                                       IsEnabled="False"/>
-                        </TableSection>
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Text="Peso total (t/m2) = " FontSize="15" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                                <Label Text="0.00" FontSize="15" x:Name="Wtotal" IsEnabled="False" />
+                            </StackLayout>
 
-                        <TableSection Title="Peso de losa alivianda">
-                            <!--Peso de losa-->
-                            <EntryCell Label="Peso total de losa (t/m2) = " 
-                                       Placeholder="0.00"                                   
-                                       x:Name="Wlosa"
-                                       IsEnabled="False"/>
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="Mamposteria (t/m2)"
-                                       FontAttributes="Bold"/>
-                                    <Picker x:Name="Mampost" 
-                                        HorizontalOptions="Center" 
-                                        Title="Seleccionar"
-                                        SelectedIndexChanged="Mampost_SelectedIndexChanged">
-                                        <Picker.ItemsSource >
-                                            <x:Array Type="{x:Type x:String}">
-                                                <x:String>Ladrillo</x:String>
-                                                <x:String>Bloque</x:String>
-                                                <x:String>Liviana</x:String>
-                                                <x:String>Sin Mamposteria</x:String>
-                                                <x:String>Ingresar</x:String>
-                                            </x:Array>
-                                        </Picker.ItemsSource>
-                                    </Picker>
-                                    <Entry Placeholder="0.00" x:Name="WMampost"
-                                           IsEnabled="False"
-                                           Completed="WMampost_Completed"/>
-                                </StackLayout>
-                            </ViewCell>
-                            <EntryCell Label="Peso total (t/m2) = " 
-                                       Placeholder="0.00"                                   
-                                       x:Name="Wtotal"
-                                       IsEnabled="False"/>
-                        </TableSection>
-                    </TableRoot>
-                </TableView>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
             </StackLayout>
 
         </ScrollView>

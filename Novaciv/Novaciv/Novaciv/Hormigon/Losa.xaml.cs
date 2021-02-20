@@ -134,14 +134,14 @@ namespace Novaciv.Hormigon
                 // chequeo de inercias
                 if (Imaz > Ialiv)
                 {
-                    chkiner.Text = "inercia No Cumple, Aumentar haliv y/o bn y/o loseta";
+                    chkiner.Text = "Inercia No Cumple, Aumentar haliv y/o bn y/o loseta";
                     chkiner.TextColor = Color.Red;
                 }
                 else
                 {
                     // chequeo de inercias
 
-                    chkiner.Text = "inercia Cumple";
+                    chkiner.Text = "Inercia Cumple";
                     chkiner.TextColor = Color.Green;
                 }
 
@@ -193,8 +193,8 @@ namespace Novaciv.Hormigon
             if (Mampost.SelectedIndex == 4)
             { WMampost.IsEnabled = true; }
 
-            if (Mampost.SelectedIndex !=-1 &&
-                Mampost.SelectedIndex !=4 &&
+            if (Mampost.SelectedIndex != -1 &&
+                Mampost.SelectedIndex != 4 &&
                 !string.IsNullOrEmpty(Wlosa.Text))
             {
                 double wmampost = double.Parse(WMampost.Text);

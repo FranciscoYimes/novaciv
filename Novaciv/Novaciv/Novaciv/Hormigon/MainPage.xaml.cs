@@ -17,5 +17,10 @@ namespace Novaciv.Hormigon
         {
             Navigation.PushAsync(new Losa(), true);
         }
+
+        void Viga_Tapped(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new Viga(), true);
+        }
     }
 }

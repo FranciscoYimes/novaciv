@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Novaciv.Hormigon.Losa">
+    <ContentPage.Content>
+
+        <ScrollView>
+            <StackLayout BackgroundColor="White">
+
+                <!-- Titulo de la pagina-->
+                <Frame BackgroundColor="#0984e3" 
+                   Padding="5" 
+                   CornerRadius="0">
+                    <Label Text="Predimensionamiento de Losa alivianada" 
+                       HorizontalTextAlignment="Center" 
+                       TextColor="White" 
+                       FontSize="30"
+                       FontAttributes="Bold"/>
+                </Frame>
+                <!-- imagen de referencia-->
+                <Image Source="pnlcrit.png"/>
+                <TableView HorizontalOptions="Center" 
+                           VerticalOptions="Center"
+                           BackgroundColor="#215170"
+                           Margin=" 5,0,5,0"
+                           HeightRequest="100">
+                    <TableRoot>
+                        <TableSection Title="Datos Arquitectonicos" 
+                                          TextColor="#6095BB">
+                            <!--longitud Entre ejes-->
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <!--Longitud Larga-->
+                                    <Label Text="Longitud larga (Ls)-m-" 
+                                           FontSize=" 15"
+                                           FontAttributes="Bold"
+                                           WidthRequest="110"/>
+                                    <Entry Placeholder="0.00" 
+                                           x:Name="Lns"
+                                           Keyboard="Numeric"
+                                           WidthRequest="60"/>
+                                    <!--Longitud Larga-->
+                                    <Label Text="Longitud Corta (Lc)-m- " 
+                                           FontSize=" 15"
+                                           FontAttributes="Bold"
+                                           WidthRequest="110"/>
+                                    <Entry Placeholder ="0.00"
+                                           x:Name="Lnc"
+                                           Keyboard="Numeric"
+                                           WidthRequest="60"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </TableSection>
+                    </TableRoot>
+                </TableView>
+                
+                <!-- titulo de datos ingresados para losa alivianda e imagen referencia-->
+                <Frame BackgroundColor="#9EAAB4" Padding="5" CornerRadius="0">
+                    <Label Text="Losa alivianda" 
+                           HorizontalTextAlignment="Center"   
+                           TextColor="White" 
+                           FontSize="15"
+                           FontAttributes="Bold"/>
+                </Frame>
+                <Image Source="dlosaliv.png"/>
+                <!-- Dimensiones del alivianamiento-->
+                <TableView HorizontalOptions="Center" 
+                           VerticalOptions="Center"
+                           BackgroundColor="#215170"
+                           Margin=" 5,0,5,0"
+                           HeightRequest="900">
+                    <TableRoot>
+                        <TableSection Title="Datos Arquitectonicos" 
+                                          TextColor="#6095BB">
+                            <!--longitud Entre ejes-->
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                <Label Text=" Dimensiones del aliviananmieto: "
+                                       FontAttributes="Bold"/>
+                                <Picker x:Name="Aliv" 
+                                        HorizontalOptions="Center" 
+                                        Title=" Seleccionar bloque"
+                                        SelectedIndexChanged="Aliv_SelectedIndexChanged">
+                                    <Picker.ItemsSource >
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>40x20x10 (cm)</x:String>
+                                            <x:String>40x20x15 (cm)</x:String>
+                                            <x:String>40x20x20 (cm)</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
+                                </Picker>
+                                </StackLayout>
+                            </ViewCell>
+                        </TableSection>
+                        <TableSection Title="Datos del Alivianamiento">
+                            <ViewCell >
+                                <StackLayout Orientation="Horizontal" >
+                                    <!-- Altura del bloque hb-->
+                                    <Label Text="Altura de bloque -hb- (cm)" 
+                                           FontSize="15"
+                                           FontAttributes="Bold" />
+                                    <Entry Placeholder="0.00"
+                                           FontSize="15" 
+                                           x:Name="hb"
+                                           IsEnabled="False"/>
+                                    <!-- ancho del bloque bb-->
+                                    <Label Text="Ancho de Bloque -bb- (cm)" 
+                                           FontSize="15"
+                                           FontAttributes="Bold" />
+                                    <Entry Placeholder=""
+                                           FontSize="15" 
+                                           x:Name="bb"
+                                           Text="40.00"
+                                           IsEnabled="False"/>
+                                </StackLayout>
+                            </ViewCell>
+                            <ViewCell >
+                                <StackLayout Orientation="Horizontal" >
+                                    <!-- Tabla a compresión Tc-->
+                                    <Label Text="Tabla a compresion -tc- (cm)" 
+                                           FontSize="15"
+                                           FontAttributes="Bold" />
+                                    <Entry Text=" 5.00" 
+                                           Placeholder="0.00" 
+                                           FontSize="15" 
+                                           x:Name="Tc"
+                                           Keyboard="Numeric"
+                                           Completed="Tc_Completed"/>
+                                    <!-- Ancho del nervio Bn-->
+                                    <Label Text="Ancho del nervio -bn- (cm)" 
+                                           FontSize="15"
+                                           FontAttributes="Bold" />
+                                    <Entry Text="10.00"
+                                           Placeholder="0.00" 
+                                           FontSize="15" 
+                                           x:Name="Bn"
+                                           Keyboard="Numeric" 
+                                           Completed="Bn_Completed"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </TableSection>
+                        <!--tabla de chequeos de resultados-->
+                        <TableSection Title="Chequeo de resultados">
+                            <!-- chequeo de nervio-->
+                            <TextCell Text="Chequeo nervio"  
+                                      x:Name="chknerv" />
+                            <!-- chequeo de loseta-->
+                            <TextCell  Text="Chequeo de loseta"
+                                       x:Name="chklos"/>
+                            <!-- Chequeo de inercias-->
+                            <TextCell Text="Chequeo inercia" 
+                                      x:Name="chkiner"/>
+                        </TableSection>
+                        <TableSection Title="Propiedades de losa Maciza">
+                            <!--Longitud de analisis-->
+                            <EntryCell Label="Longitud de analisis -L- (cm) "    
+                                       Placeholder="0.00" 
+                                       x:Name="lcalc"
+                                       IsEnabled="False"/>                                       
+                                       
+                            <!-- altura de losa maciza-->
+                            <EntryCell Label="Altura de Losa maciza -hmac- (cm) "
+                                       Placeholder="0.00" 
+                                       x:Name="hl"
+                                       IsEnabled="False"/>
+                            <!--inercia de losa maciza-->
+                            <EntryCell Label="Inercia de losa maciza (cm4)"
+                                       Placeholder="inercia (cm4)" 
+                                       x:Name="inerl"
+                                       IsEnabled="False"/>
+
+                        </TableSection>
+                        <TableSection Title="Propiedades de losa Alivianada">
+                            <!--Altura de losa alivianada-->
+                            <EntryCell Label="Altura losa alivianada -haliv- (cm)"
+                                       Placeholder="0.00" 
+                                       x:Name="h"
+                                       Keyboard="Numeric" 
+                                       IsEnabled="False"/>
+                            <!-- inercia lisa alivianada-->
+                            <EntryCell Label ="Inercia de losa Alivianada (cm4) "
+                                       Placeholder="inercia (cm4)"
+                                       x:Name="ila"
+                                       IsEnabled="False"/>
+                            <!--Altura equivalente-->
+                            <EntryCell Label="Altura Equivalente -heq- (cm)" 
+                                       Placeholder="0.00"                                   
+                                       x:Name="heq"
+                                       IsEnabled="False"/>
+                        </TableSection>
+
+                        <TableSection Title="Peso de losa alivianda">
+                            <!--Peso de losa-->
+                            <EntryCell Label="Peso total de losa (t/m2) = " 
+                                       Placeholder="0.00"                                   
+                                       x:Name="Wlosa"
+                                       IsEnabled="False"/>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Mamposteria (t/m2)"
+                                       FontAttributes="Bold"/>
+                                    <Picker x:Name="Mampost" 
+                                        HorizontalOptions="Center" 
+                                        Title="Seleccionar"
+                                        SelectedIndexChanged="Mampost_SelectedIndexChanged">
+                                        <Picker.ItemsSource >
+                                            <x:Array Type="{x:Type x:String}">
+                                                <x:String>Ladrillo</x:String>
+                                                <x:String>Bloque</x:String>
+                                                <x:String>Liviana</x:String>
+                                                <x:String>Sin Mamposteria</x:String>
+                                                <x:String>Ingresar</x:String>
+                                            </x:Array>
+                                        </Picker.ItemsSource>
+                                    </Picker>
+                                    <Entry Placeholder="0.00" x:Name="WMampost"
+                                           IsEnabled="False"
+                                           Completed="WMampost_Completed"/>
+                                </StackLayout>
+                            </ViewCell>
+                            <EntryCell Label="Peso total (t/m2) = " 
+                                       Placeholder="0.00"                                   
+                                       x:Name="Wtotal"
+                                       IsEnabled="False"/>
+                        </TableSection>
+                    </TableRoot>
+                </TableView>
+            </StackLayout>
+
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

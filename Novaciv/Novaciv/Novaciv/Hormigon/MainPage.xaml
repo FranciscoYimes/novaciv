@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage BackgroundColor="#e6ebee" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Novaciv.Hormigon.MainPage">
+    <ContentPage.Content>
+        <StackLayout Padding="20" Margin="0,30,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            <Frame Margin="0,10,0,0" Padding="0" CornerRadius="10" BorderColor="#a2cdf0" BackgroundColor="#a2cdf0" HasShadow="False" >
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Losa_Tapped"/>
+                </Frame.GestureRecognizers>
+                <StackLayout Orientation="Horizontal" Padding="20">
+                    <Label Margin="10" Text="Losa alivianada" FontSize="16" FontAttributes="Bold" />
+                </StackLayout>
+            </Frame>
+
+            <Frame Margin="0,10,0,0" Padding="0" CornerRadius="10" BorderColor="#a2cdf0" BackgroundColor="#a2cdf0" HasShadow="False" >
+                <StackLayout Orientation="Horizontal" Padding="20">
+                    <Label Margin="10" Text="Vigas" FontSize="16" FontAttributes="Bold" />
+                </StackLayout>
+            </Frame>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

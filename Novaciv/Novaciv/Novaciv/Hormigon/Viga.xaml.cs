@@ -22,7 +22,7 @@ namespace Novaciv.Hormigon
         {
             //don´t know why do not recognize dot as 0.
             string cond = L1.Text;
-            if (cond == ".")
+            if (cond.Equals("."))
             {
                 L1.Text.Replace(".", "0.");
             }
@@ -77,17 +77,17 @@ namespace Novaciv.Hormigon
         {
             if (string.IsNullOrEmpty(Np.Text))
             {
-                Col.On = false;
+                Col.IsToggled = false;
                 DisplayAlert("Atención", "Para proceder con el calculo, Ingrese Número de pisos", "Aceptar");
 
             }
             else
             {
-                if (Col.On)
+                if (Col.IsToggled)
                 {
                     if (!string.IsNullOrEmpty(L1.Text))
                     {
-                        Bcol.Label = "Ancho Aproximado bcol (m)";
+                        //Bcol.Text = "Ancho Aproximado bcol (m)";
                         double valcol;
                         double l1 = double.Parse(L1.Text);
                         double npisos = double.Parse(Np.Text);
@@ -108,16 +108,16 @@ namespace Novaciv.Hormigon
                     else
                     {
                         DisplayAlert("Atención", "Ingresar datos de longitudes", "Aceptar");
-                        Col.On = false;
+                        Col.IsToggled = false;
                     }
                 }
                 else
                 {
-                    Bcol.Label = "Ancho de columna bcol (m)";
+                    //Bcol.Text = "Ancho de columna bcol (m)";
                     Bcol.Text = string.Empty;
                     lv.Text = string.Empty;
-                    Bcol.Placeholder = "Ingrese Ancho de columna";
-                    Bcol.IsEnabled = true;
+                    //Bcol.Text = "Ingrese Ancho de columna";
+                    //Bcol.IsEnabled = true;
                 }
             }
         }
@@ -142,7 +142,7 @@ namespace Novaciv.Hormigon
             {
                 var item = Sism.ItemsSource[Sism.SelectedIndex] as string;
 
-                if (item == "Alta (Costa - Sierra)")
+                if (item.Equals("Alta (Costa - Sierra)"))
                 {
                     double fc = double.Parse(Fc.Text.Replace(".", "0."));
                     double fy = double.Parse(Fy.Text.Replace(".", "0."));
@@ -151,7 +151,7 @@ namespace Novaciv.Hormigon
                     double pmAlta = Math.Round(0.5 * cuantiab, 2);
                     pm.Text = pmAlta.ToString();
                 }
-                else if (item == "Intermedia (Oriente)")
+                else if (item.Equals("Intermedia (Oriente)"))
                 {
                     double fc = double.Parse(Fc.Text.Replace(".", "0."));
                     double fy = double.Parse(Fy.Text.Replace(".", "0."));
@@ -175,27 +175,27 @@ namespace Novaciv.Hormigon
         {
             var item = SelectCM.ItemsSource[SelectCM.SelectedIndex] as string;
 
-            if (item == "Losa con Mamposteria liviana")
+            if (item.Equals("Losa con Mamposteria liviana"))
             {
                 CM.IsEnabled = false;
                 CM.Text = string.Format("{0:F2}", 0.57);
             }
-            else if (item == "Losa con Mamposteria de bloque")
+            else if (item.Equals("Losa con Mamposteria de bloque"))
             {
                 CM.IsEnabled = false;
                 CM.Text = string.Format("{0:F2}", 0.65);
             }
-            else if (item == "Losa con mamposteria de ladrillo")
+            else if (item.Equals("Losa con mamposteria de ladrillo"))
             {
                 CM.IsEnabled = false;
                 CM.Text = string.Format("{0:F2}", 0.67);
             }
-            else if (item == "Losa sin mamposteria")
+            else if (item.Equals("Losa sin mamposteria"))
             {
                 CM.IsEnabled = false;
                 CM.Text = string.Format("{0:F2}", 0.55);
             }
-            else if (item == "Ingresar")
+            else if (item.Equals("Ingresar"))
             {
                 CM.Placeholder = "Ingrese CM";
                 CM.Text = string.Empty;
@@ -212,37 +212,37 @@ namespace Novaciv.Hormigon
         {
             var item = SelectCV.ItemsSource[SelectCV.SelectedIndex] as string;
 
-            if (item == "Vivienda")
+            if (item.Equals("Vivienda"))
             {
                 CV.IsEnabled = false;
                 CV.Text = string.Format("{0:F2}", 0.20);
             }
-            else if (item == "Almacenes")
+            else if (item.Equals("Almacenes"))
             {
                 CV.IsEnabled = false;
                 CV.Text = string.Format("{0:F2}", 0.48);
             }
-            else if (item == "Bibliotecas")
+            else if (item.Equals("Bibliotecas"))
             {
                 CV.IsEnabled = false;
                 CV.Text = string.Format("{0:F2}", 0.72);
             }
-            else if (item == "Oficinas")
+            else if (item.Equals("Oficinas"))
             {
                 CV.IsEnabled = false;
                 CV.Text = string.Format("{0:F2}", 0.25);
             }
-            else if (item == "Graderios")
+            else if (item.Equals("Graderios"))
             {
                 CV.IsEnabled = false;
                 CV.Text = string.Format("{0:F2}", 0.48);
             }
-            else if (item == "Aulas")
+            else if (item.Equals("Aulas"))
             {
                 CV.IsEnabled = false;
                 CV.Text = string.Format("{0:F2}", 0.20);
             }
-            else if (item == "Ingresar")
+            else if (item.Equals("Ingresar"))
             {
                 CV.Text = string.Empty;
                 CV.Placeholder = "Ingrese CV";

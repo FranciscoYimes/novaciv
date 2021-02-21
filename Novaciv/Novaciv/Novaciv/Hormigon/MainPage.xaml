@@ -3,23 +3,25 @@
     <ContentPage.Content>
         <StackLayout Padding="20" Margin="0,30,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-            <Frame Margin="0,10,0,0" Padding="0" CornerRadius="10" BorderColor="#a2cdf0" BackgroundColor="#a2cdf0" HasShadow="False" >
+            <Frame Margin="0,10,0,0" Padding="0" CornerRadius="10" BorderColor="#264c76" BackgroundColor="#264c76" HasShadow="False" >
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="Losa_Tapped"/>
                 </Frame.GestureRecognizers>
                 <StackLayout Orientation="Horizontal" Padding="20">
-                    <Label Margin="10" Text="Losa alivianada" FontSize="16" FontAttributes="Bold" />
+                    <Label Margin="10" Text="Prediseño de Losas" TextColor="White" FontSize="16" FontAttributes="Bold" />
                 </StackLayout>
             </Frame>
 
-            <Frame Margin="0,10,0,0" Padding="0" CornerRadius="10" BorderColor="#a2cdf0" BackgroundColor="#a2cdf0" HasShadow="False" >
+            <Frame Margin="0,10,0,0" Padding="0" CornerRadius="10" BorderColor="#264c76" BackgroundColor="#264c76" HasShadow="False" >
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="Viga_Tapped"/>
                 </Frame.GestureRecognizers>
                 <StackLayout Orientation="Horizontal" Padding="20">
-                    <Label Margin="10" Text="Vigas" FontSize="16" FontAttributes="Bold" />
+                    <Label Margin="10" Text="Prediseño de Vigas" TextColor="White" FontSize="16" FontAttributes="Bold" />
                 </StackLayout>
             </Frame>
+
+            <Label VerticalOptions="EndAndExpand" FontSize="16" HorizontalTextAlignment="Center" Text="El dimensionamiento preliminar de las secciones ha sido realizado siguiendo las normativas nacionales, pero esto no remplazará un cálculo estructural realizado por un profesional especialista en el área."/>
 
         </StackLayout>
     </ContentPage.Content>

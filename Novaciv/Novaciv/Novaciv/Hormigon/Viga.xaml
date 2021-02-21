@@ -1,283 +1,232 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Predimensionamiento Viga de hormigón"
              x:Class="Novaciv.Hormigon.Viga">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout BackgroundColor="White">
 
-                <!-- Titulo de la pagina-->
-                <Frame BackgroundColor="#264C76" 
-                   Padding="5" 
-                   CornerRadius="0">
-                    <Label Text="Predimensionamiento Viga de hormigón" 
-                       HorizontalTextAlignment="Center" 
-                       TextColor="White" 
-                       FontSize="30"
-                       FontAttributes="Bold"/>
-                </Frame>
+                <StackLayout BackgroundColor="#6095bb" Spacing="1" Padding="1" Margin="10,10,10,0" HorizontalOptions="FillAndExpand">
+                    <StackLayout Padding="10" Spacing="0" BackgroundColor="#6095bb">
+                        <Label Text="Panel crítico" FontAttributes="Bold" TextColor="White" FontSize="14" />
+                    </StackLayout>
+                    <StackLayout Spacing="0" BackgroundColor="White">
+                        <Image Source="pnlvig.png"/>
+                    </StackLayout>
+
+                </StackLayout>
+
                 <!--titulo de datos ingresados e imagen de referencia-->
-                <Frame BackgroundColor="#6095BB" Padding="5" CornerRadius="0">
-                    <Label Text="Panel crítico" 
-                       HorizontalTextAlignment="Center"   
-                       TextColor="White" 
-                       FontSize="15"
-                       FontAttributes="Bold"/>
-                </Frame>
-                <Image Source="pnlvig.png"/>
-                <TableView HorizontalOptions="Center" 
-                           VerticalOptions="Center"
-                           BackgroundColor="#215170"
-                           Margin=" 5,0,5,0"
-                           HeightRequest="980">
-                    <TableRoot>
-                        <TableSection Title="Datos Arquitectonicos" 
-                                          TextColor="#6095BB">
+
+                <StackLayout BackgroundColor="#6095bb" Spacing="1" Padding="1" Margin="10,5,10,0" HorizontalOptions="FillAndExpand">
+                    <StackLayout Padding="10" Spacing="0" BackgroundColor="#6095bb">
+                        <Label Text="Datos Arquitectonicos" FontAttributes="Bold" TextColor="White" FontSize="14" />
+                    </StackLayout>
+                    <StackLayout Spacing="0" BackgroundColor="White">
+
+                        <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
                             <!--longitud Entre ejes-->
-                            <EntryCell Label="Longitud entre ejes (L)-m-" 
-                                       LabelColor="#E6EBEE"
-                                       HorizontalTextAlignment="Center" 
-                                       VerticalTextAlignment="Center" 
-                                       Placeholder="0.00"
-                                       x:Name="L1"
-                                       Keyboard="Numeric"
-                                       Completed="L1_Completed"/>
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Text="Longitud entre ejes (L)-m-" FontSize="15" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                                <Entry Placeholder="0.00" FontSize="15" x:Name="L1" Keyboard="Numeric" WidthRequest="70" Completed="L1_Completed"/>
+                            </StackLayout>
                             <!--longitud transversal 1-->
-                            <EntryCell  HorizontalTextAlignment="Center" 
-                                            VerticalTextAlignment="Center" 
-                                            Label="Longitud Transversal (Lt1)-m-"
-                                            Placeholder="0.00"
-                                            x:Name="Lt1"
-                                            LabelColor="#E6EBEE"
-                                            Keyboard="Numeric"/>
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Text="Longitud Transversal (Lt1)-m-" FontSize="15" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                                <Entry  Placeholder="0.00" FontSize="15" x:Name="Lt1" Keyboard="Numeric" WidthRequest="70" />
+                            </StackLayout>
                             <!--longitud transversal-->
-                            <EntryCell  HorizontalTextAlignment="End" 
-                                            VerticalTextAlignment="End" 
-                                            Label="Longitud Transversal (Lt2)-m-" 
-                                            Placeholder="0.00"
-                                            x:Name="Lt2"
-                                             LabelColor="#E6EBEE"
-                                            Keyboard="Numeric"/>
-                            <EntryCell  HorizontalTextAlignment="Center"  
-                                            VerticalTextAlignment="Center"  
-                                            Label="Numero de pisos" 
-                                            Placeholder="0"
-                                            x:Name="Np"
-                                             LabelColor="#E6EBEE"
-                                            Keyboard="Numeric"
-                                            Completed="Np_Completed"/>
-                        </TableSection>
-                        <!-- Definir seccion de columna-->
-                        <TableSection Title="Ancho de columnas" 
-                                          TextColor="#6095BB">
-                            <SwitchCell Text=" Calcular ancho de columna aproximado :"
-                                        On="False"
-                                        x:Name="Col"
-                                        OnChanged="Col_OnChanged"/>
-                            <EntryCell  HorizontalTextAlignment="End" 
-                                        VerticalTextAlignment="End" 
-                                        Label="Ancho de columna bcol (m)  "
-                                        Placeholder="0.00"
-                                        x:Name="Bcol"
-                                        LabelColor="#E6EBEE"
-                                        Completed="Bcol_Completed"
-                                        Keyboard="Numeric"/>
-                            <EntryCell Label="Longitud de viga Lv (m)"
-                                       LabelColor="#E6EBEE"
-                                       x:Name="lv"
-                                       Placeholder="0.00"
-                                       HorizontalTextAlignment="Center" 
-                                       VerticalTextAlignment="Center"/>
-                        </TableSection>
-                        <!-- Cargas sobre la estructura-->
-                        <TableSection Title="Cargas" >
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="Carga Muerta (t/m2) " 
-                                               VerticalOptions="Center"
-                                               TextColor=" #E6EBEE"/>
-                                    <!-- Seleccionar carga muerta-->
-                                    <Picker x:Name="SelectCM" 
-                                                Title=" Seleccionar"
-                                                TextColor="#E6EBEE"
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Text="Longitud Transversal (Lt2)-m-" FontSize="15" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                                <Entry  Placeholder="0.00" FontSize="15" x:Name="Lt2" Keyboard="Numeric" WidthRequest="70" />
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Text="Numero de pisos" FontSize="15" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                                <Entry  Placeholder="0" FontSize="15" x:Name="Np" Keyboard="Numeric" WidthRequest="70" Completed="Np_Completed"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
+                <!-- Definir seccion de columna-->
+                <StackLayout BackgroundColor="#6095bb" Spacing="1" Padding="1" Margin="10,5,10,0" HorizontalOptions="FillAndExpand">
+                    <StackLayout Padding="10" Spacing="0" BackgroundColor="#6095bb">
+                        <Label Text="Ancho de columnas" FontAttributes="Bold" TextColor="White" FontSize="14" />
+                    </StackLayout>
+                    <StackLayout Spacing="0" BackgroundColor="White">
+
+                        <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Text="Calcular ancho de columna aproximado: " FontSize="15" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                                <Switch x:Name="Col" WidthRequest="70" Toggled="Col_OnChanged" IsToggled="False"/>
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Text="Ancho de columna bcol (m)" FontSize="15" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                                <Entry  Placeholder="0.00" FontSize="15" x:Name="Bcol" Keyboard="Numeric" WidthRequest="70" />
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Text="Longitud de viga Lv (m)" FontSize="15" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                                <Entry  Placeholder="0.00" FontSize="15" x:Name="lv" Keyboard="Numeric" WidthRequest="70" />
+                            </StackLayout>
+
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
+                <!-- Cargas sobre la estructura-->
+                <StackLayout BackgroundColor="#6095bb" Spacing="1" Padding="1" Margin="10,5,10,0" HorizontalOptions="FillAndExpand">
+                    <StackLayout Padding="10" Spacing="0" BackgroundColor="#6095bb">
+                        <Label Text="Cargas" FontAttributes="Bold" TextColor="White" FontSize="14" />
+                    </StackLayout>
+                    <StackLayout Spacing="0" BackgroundColor="White">
+
+                        <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
+
+                            <Label Text="Carga Muerta (t/m2)" FontSize="15" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+
+                                <Picker x:Name="SelectCM" 
+                                                Title="Seleccionar"
+                                                TextColor="Black"
                                                 VerticalTextAlignment="Center"
                                                 HorizontalTextAlignment="Center"
+                                        HorizontalOptions="FillAndExpand"
                                                 SelectedIndexChanged="SelectCM_SelectedIndexChanged">
-                                        <Picker.ItemsSource >
-                                            <x:Array Type="{x:Type x:String}">
-                                                <x:String>Losa con Mamposteria liviana</x:String>
-                                                <x:String>Losa con Mamposteria de bloque</x:String>
-                                                <x:String>Losa con mamposteria de ladrillo</x:String>
-                                                <x:String>Losa sin mamposteria</x:String>
-                                                <x:String>Ingresar</x:String>
-                                            </x:Array>
-                                        </Picker.ItemsSource>
-                                    </Picker>
-                                    <Entry x:Name="CM"
+                                    <Picker.ItemsSource >
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>Losa con Mamposteria liviana</x:String>
+                                            <x:String>Losa con Mamposteria de bloque</x:String>
+                                            <x:String>Losa con mamposteria de ladrillo</x:String>
+                                            <x:String>Losa sin mamposteria</x:String>
+                                            <x:String>Ingresar</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
+                                </Picker>
+                                <Entry x:Name="CM"
                                                Keyboard="Numeric"
                                                Completed="CM_Completed"
                                                HorizontalTextAlignment="Center"
                                                IsEnabled="False"
                                                WidthRequest="100"/>
-                                </StackLayout>
-                            </ViewCell>
-                            <ViewCell >
-                                <ViewCell.View>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label 
-                                            Text="Carga Viva     (t/m2) " 
-                                            TextColor=" #E6EBEE"
-                                            VerticalTextAlignment="Center"
-                                            HorizontalTextAlignment="Center"/>
-                                        <!-- SEleccionar carga viva -->
-                                        <Picker Grid.Row="2" Grid.Column="1" 
+                            </StackLayout>
+
+                            <Label Text="Carga Viva (t/m2)" FontSize="15" Margin="0,10,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Picker Grid.Row="2" Grid.Column="1" 
                                                 x:Name="SelectCV" 
-                                                Title=" Seleccionar"
-                                                TextColor="#E6EBEE"
+                                                Title="Seleccionar"
+                                                TextColor="Black"
                                                 VerticalTextAlignment="Center"
                                                 HorizontalTextAlignment="Center"
+                                        HorizontalOptions="FillAndExpand"
                                                 SelectedIndexChanged="SelectCV_SelectedIndexChanged">
-                                            <Picker.ItemsSource >
-                                                <x:Array Type="{x:Type x:String}">
-                                                    <x:String>Vivienda</x:String>
-                                                    <x:String>Almacenes</x:String>
-                                                    <x:String>Bibliotecas</x:String>
-                                                    <x:String>Oficinas</x:String>
-                                                    <x:String>Graderios</x:String>
-                                                    <x:String>Aulas</x:String>
-                                                    <x:String>Ingresar</x:String>
-                                                </x:Array>
-                                            </Picker.ItemsSource>
-                                        </Picker>
-                                        <Entry x:Name="CV"
+                                    <Picker.ItemsSource >
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>Vivienda</x:String>
+                                            <x:String>Almacenes</x:String>
+                                            <x:String>Bibliotecas</x:String>
+                                            <x:String>Oficinas</x:String>
+                                            <x:String>Graderios</x:String>
+                                            <x:String>Aulas</x:String>
+                                            <x:String>Ingresar</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
+                                </Picker>
+                                <Entry x:Name="CV"
                                                Keyboard="Numeric"
                                                VerticalTextAlignment="Center"
                                                HorizontalTextAlignment="Center"
                                                Completed="CV_Completed"
                                                IsEnabled="False"
                                                WidthRequest="100"/>
-                                    </StackLayout>
-                                </ViewCell.View>
-                            </ViewCell>
-                            <!--  Carga ultima-->
-                            <ViewCell >
-                                <ViewCell.View>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label 
-                                            Text="Carga Ultima   (t/m2) " 
-                                            TextColor=" #E6EBEE"
-                                            VerticalTextAlignment="Center"
-                                            HorizontalTextAlignment="Center"/>
-                                        <Entry x:Name="CU"
-                                               Keyboard="Numeric"
-                                               VerticalTextAlignment="Center"
-                                               HorizontalTextAlignment="Center"
-                                               IsEnabled="False"
-                                               WidthRequest="100"/>
-                                    </StackLayout>
-                                </ViewCell.View>
-                            </ViewCell>
-                        </TableSection>
-                        <TableSection Title="Materiales" 
-                                      TextColor="#6095BB">
-                            <!--Materiales -->
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal">
-                                    <!-- resistencia del hormigón-->
-                                    <Label Text="Hormgón f'c (kg/cm2)"
-                                           TextColor="#E6EBEE"
-                                           VerticalTextAlignment="Center"
-                                           HorizontalTextAlignment="Start"
-                                           WidthRequest="120"/>
-                                    <Entry  HorizontalTextAlignment="End"                                     
-                                            VerticalTextAlignment="End" 
-                                            Placeholder="0.00"
-                                            x:Name="Fc"
-                                            Keyboard="Numeric"
-                                            Completed="Fc_Completed"
-                                            Text="210"/>
-                                    <!-- resistencia del acero-->
-                                    <Label Text="Acero fy (kg/cm2)"
-                                           TextColor="#E6EBEE"
-                                           VerticalTextAlignment="Center"
-                                           HorizontalTextAlignment="Start"
-                                           WidthRequest="110"/>
-                                    <Entry HorizontalTextAlignment="End" 
-                                           VerticalTextAlignment="End" 
-                                           Placeholder="0.00"
-                                           x:Name="Fy"
-                                           Keyboard="Numeric"
-                                           Completed="Fy_Completed"
-                                           Text="4200"/>
-                                </StackLayout>
-                            </ViewCell>
-                        </TableSection>
-                        <!--Seleccionar zona sismica-->
-                        <TableSection Title="Sismicidad" >
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text=" Sismicidad del sitio: " 
-                                               VerticalOptions="Center"
-                                               TextColor=" #E6EBEE"/>
-                                    <Picker 
-                                            TextColor=" #E6EBEE"
-                                            x:Name="Sism"  
-                                            Title="Seleccionar"
-                                            WidthRequest="170"
-                                            VerticalTextAlignment="Center"
-                                            HorizontalTextAlignment="Center"
-                                            SelectedIndexChanged="Sism_SelectedIndexChanged">
-                                        <Picker.ItemsSource>
-                                            <x:Array Type="{x:Type x:String}">
-                                                <x:String>Alta (Costa - Sierra)</x:String>
-                                                <x:String>Intermedia (Oriente)</x:String>
-                                            </x:Array>
-                                        </Picker.ItemsSource>
-                                    </Picker>
-                                    <Entry x:Name="Fspp"
-                                           Keyboard="Numeric"
-                                           VerticalTextAlignment="Center"
-                                           HorizontalTextAlignment="Center"
-                                           IsEnabled="False"
-                                           WidthRequest="50"
-                                           IsVisible="false"/>
-                                </StackLayout>
-                            </ViewCell>
-                        </TableSection>
-                        <TableSection Title="Chequeo de Cuantia"                                      
-                                          TextColor="#6095BB">
-                            <ViewCell >
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="Cuantia Balanceada (%)"
-                                           TextColor="#E6EBEE"
-                                           VerticalTextAlignment="Center"
-                                           HorizontalTextAlignment="Start"
-                                           WidthRequest="100"/>
-                                    <Entry  Placeholder ="0.00"
-                                            x:Name="pb"
-                                            Keyboard="Numeric"
-                                            VerticalTextAlignment="Center"
-                                            HorizontalTextAlignment="Center"
-                                            IsEnabled="False"
-                                            WidthRequest="50"/>
-                                    <Label Text="Cuantia Máxima (%)"
-                                           TextColor="#E6EBEE"
-                                           VerticalTextAlignment="Center"
-                                           HorizontalTextAlignment="Start"
-                                           WidthRequest="80"/>
-                                    <Entry Placeholder ="0.00"
-                                           x:Name="pm"
-                                           Keyboard="Numeric"
-                                           VerticalTextAlignment="Center"
-                                           HorizontalTextAlignment="Center"
-                                           IsEnabled="False"
-                                           WidthRequest="50"/>
-                                    <Switch />
-                                </StackLayout>
-                            </ViewCell>
-                        </TableSection>
-                    </TableRoot>
-                </TableView>
+                            </StackLayout>
+
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Text="Carga Ultima   (t/m2) " TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand"/>
+                                <Entry x:Name="CU" Keyboard="Numeric" VerticalTextAlignment="Center"  HorizontalTextAlignment="Center" IsEnabled="False" WidthRequest="100"/>
+                            </StackLayout>
+
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout BackgroundColor="#6095bb" Spacing="1" Padding="1" Margin="10,5,10,0" HorizontalOptions="FillAndExpand">
+                    <StackLayout Padding="10" Spacing="0" BackgroundColor="#6095bb">
+                        <Label Text="Materiales" FontAttributes="Bold" TextColor="White" FontSize="14" />
+                    </StackLayout>
+                    <StackLayout Spacing="0" BackgroundColor="White">
+
+                        <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Text="Hormgón f'c (kg/cm2)" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"  HorizontalOptions="FillAndExpand" />
+                                <Entry HorizontalTextAlignment="End" VerticalTextAlignment="End" Placeholder="0.00" x:Name="Fc" Keyboard="Numeric" Completed="Fc_Completed" Text="210"/>
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Text="Acero fy (kg/cm2)" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand" />
+                                <Entry HorizontalTextAlignment="End" VerticalTextAlignment="End" Placeholder="0.00" x:Name="Fy" Keyboard="Numeric" Completed="Fy_Completed" Text="4200"/>
+                            </StackLayout>
+
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
+                <!--Seleccionar zona sismica-->
+                <StackLayout BackgroundColor="#6095bb" Spacing="1" Padding="1" Margin="10,5,10,0" HorizontalOptions="FillAndExpand">
+                    <StackLayout Padding="10" Spacing="0" BackgroundColor="#6095bb">
+                        <Label Text="Sismicidad" FontAttributes="Bold" TextColor="White" FontSize="14" />
+                    </StackLayout>
+                    <StackLayout Spacing="0" BackgroundColor="White">
+
+                        <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+
+                                <Picker TextColor="Black" x:Name="Sism" Title="Sismicidad del sitio"  WidthRequest="170"  VerticalTextAlignment="Center" HorizontalTextAlignment="Center" SelectedIndexChanged="Sism_SelectedIndexChanged">
+                                    <Picker.ItemsSource>
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>Alta (Costa - Sierra)</x:String>
+                                            <x:String>Intermedia (Oriente)</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
+                                </Picker>
+                                <Entry x:Name="Fspp" Keyboard="Numeric" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" IsEnabled="False" WidthRequest="50" IsVisible="false"/>
+                            </StackLayout>
+
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout BackgroundColor="#6095bb" Spacing="1" Padding="1" Margin="10,5,10,0" HorizontalOptions="FillAndExpand">
+                    <StackLayout Padding="10" Spacing="0" BackgroundColor="#6095bb">
+                        <Label Text="Chequeo de Cuantia" FontAttributes="Bold" TextColor="White" FontSize="14" />
+                    </StackLayout>
+                    <StackLayout Spacing="0" BackgroundColor="White">
+
+                        <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Text="Cuantia Balanceada (%)"  TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand" />
+                                <Entry Placeholder ="0.00" x:Name="pb" TextColor="Black" Keyboard="Numeric" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" IsEnabled="False" WidthRequest="50"/>
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Text="Cuantia Máxima (%)"  TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand"/>
+                                <Entry Placeholder ="0.00" x:Name="pm" Keyboard="Numeric" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" IsEnabled="False" WidthRequest="50"/>
+                            </StackLayout>
+
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
 
                 <StackLayout >
                     <!-- Imagen referencial de seccion de viga-->
@@ -287,282 +236,242 @@
                            HeightRequest="175"/>
                 </StackLayout>
                 <!--Diemnsiones de viga-->
-                <TableView HorizontalOptions="Center" 
-                           VerticalOptions="Center"
-                           BackgroundColor="#215170"
-                           Margin=" 5,0,5,0"
-                           HeightRequest="320">
-                    <TableView.Root >
-                        <TableSection Title="Dimensiones de viga">
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal">
-                                    <!--Ancho de viga-->
-                                    <Label  HorizontalTextAlignment="Center"  
-                                            VerticalTextAlignment="Center"  
-                                            Text="Ancho (b)-cm"
-                                            WidthRequest="75"
-                                            TextColor="#E6EBEE"/>
-                                    <Entry Placeholder ="0.00"
-                                           x:Name="Bv"
-                                           Keyboard="Numeric"
-                                           VerticalTextAlignment="Center"
-                                           HorizontalTextAlignment="Center"
-                                           WidthRequest="50"
-                                           Completed="Bv_Completed"/>
-                                    <!--Recubrimiento de viga-->
-                                    <Label HorizontalTextAlignment="Center"  
-                                           VerticalTextAlignment="Center"
-                                           Text="Recubrimiento (Rec)-cm"
-                                           WidthRequest="120"
-                                           TextColor="#E6EBEE"/>
-                                    <Entry  HorizontalTextAlignment="Center"  
-                                            VerticalTextAlignment="Center"  
-                                            Placeholder="0.00"
-                                            x:Name="Rec"
-                                            Keyboard="Numeric"
-                                            WidthRequest="50"
-                                            Completed="Rec_Completed"/>
-                                </StackLayout>
-                            </ViewCell>
-                            <ViewCell >
-                                <StackLayout Orientation="Horizontal">
-                                    <!--Altura de viga-->
-                                    <Label HorizontalTextAlignment="Center"  
-                                           VerticalTextAlignment="Center"  
-                                           Text="Alto h (cm)"
-                                           WidthRequest="75"
-                                           TextColor="#E6EBEE"/>
-                                    <Entry HorizontalTextAlignment="Center" 
-                                           VerticalTextAlignment="Center" 
-                                           Placeholder="0.00"
-                                           x:Name="Hv"
-                                           Keyboard="Numeric"
-                                           Completed="Hv_Completed"
-                                           WidthRequest="50"/>
-                                    <!--Altura Aprox-->
-                                    <Label HorizontalTextAlignment="Center"  
-                                           VerticalTextAlignment="Center"  
-                                           Text="Calcular una Altura h:"
-                                           WidthRequest="110"
-                                           TextColor="#E6EBEE"/>
-                                    <Switch  x:Name="Beamh"
-                                             WidthRequest="50"
-                                             IsToggled="False"
-                                             HorizontalOptions="Center" 
-                                             VerticalOptions="Center"
-                                             Toggled="Beamh_Toggled"/>
-                                </StackLayout>
-                            </ViewCell>
-                            <ViewCell >
-                                <StackLayout Orientation="Horizontal" >
 
-                                    <!--Chequeo de relacion h/b-->
-                                    <Label HorizontalTextAlignment="Center"  
+                <StackLayout BackgroundColor="#6095bb" Spacing="1" Padding="1" Margin="10,5,10,0" HorizontalOptions="FillAndExpand">
+                    <StackLayout Padding="10" Spacing="0" BackgroundColor="#6095bb">
+                        <Label Text="Dimensiones de viga" FontAttributes="Bold" TextColor="White" FontSize="14" />
+                    </StackLayout>
+                    <StackLayout Spacing="0" BackgroundColor="White">
+
+                        <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
+
+                            <!--Ancho de viga-->
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label  HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Text="Ancho (b)-cm" TextColor="Black" HorizontalOptions="FillAndExpand"/>
+                                <Entry Placeholder ="0.00" x:Name="Bv" Keyboard="Numeric" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" WidthRequest="50" Completed="Bv_Completed"/>
+                            </StackLayout>
+
+                            <!--Recubrimiento de viga-->
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Text="Recubrimiento (Rec)-cm" TextColor="Black" HorizontalOptions="FillAndExpand"/>
+                                <Entry  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Placeholder="0.00" x:Name="Rec" Keyboard="Numeric" WidthRequest="50" Completed="Rec_Completed"/>
+                            </StackLayout>
+
+                            <!--Altura de viga-->
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Text="Alto h (cm)" TextColor="Black" HorizontalOptions="FillAndExpand"/>
+                                <Entry HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Placeholder="0.00" x:Name="Hv" Keyboard="Numeric" Completed="Hv_Completed" WidthRequest="50"/>
+                            </StackLayout>
+
+                            <!--Altura Aprox-->
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label HorizontalTextAlignment="Start"  VerticalTextAlignment="Center" Text="Calcular una Altura h:" TextColor="Black" HorizontalOptions="FillAndExpand"/>
+                                <Switch  x:Name="Beamh" WidthRequest="50" IsToggled="False" VerticalOptions="Center" Toggled="Beamh_Toggled"/>
+                            </StackLayout>
+
+                            <!--Chequeo de relacion h/b-->
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label HorizontalTextAlignment="Start"  
                                            VerticalTextAlignment="Center"
                                            Text="h/b:"
-                                           WidthRequest="75"
-                                           TextColor="#E6EBEE"/>
-                                    <Entry  HorizontalTextAlignment="End" 
+                                           HorizontalOptions="FillAndExpand"
+                                           TextColor="Black"/>
+                                <Entry  HorizontalTextAlignment="End" 
                                             VerticalTextAlignment="End" 
                                             Placeholder="0.00"
                                             x:Name="hb"
                                             Keyboard="Numeric"/>
-                                    <!--chequeo de seccion h/b-->
-                                    <Label HorizontalTextAlignment="Center"  
+                                <!--chequeo de seccion h/b-->
+                                <Label HorizontalTextAlignment="Center"  
                                            VerticalTextAlignment="Center"
                                            Text="chequeo"
                                            x:Name="Chkbeam"
-                                           TextColor="#E6EBEE"/>
-                                </StackLayout>
-                            </ViewCell>
-                        </TableSection>
-                        <!-- Momento de diseño-->
-                        <TableSection Title="Momento de diseño">
-                            <ViewCell >
-                                <StackLayout Orientation="Horizontal">
-                                    <Label HorizontalOptions="Center"  
-                                           VerticalTextAlignment="Center"  
-                                           Text="Momento Estático (t-m)"
-                                           WidthRequest="100"
-                                           TextColor="#E6EBEE"/>
-                                    <Entry x:Name="Me"
-                                           Placeholder="0.00"
-                                           HorizontalTextAlignment="Center" 
-                                           VerticalTextAlignment="Center"
-                                           WidthRequest="60"/>
-                                    <Label HorizontalOptions="Center"  
-                                           VerticalTextAlignment="Center"  
-                                           Text="Momento de diseño (t-m)"
-                                           WidthRequest="100"
-                                           TextColor="#E6EBEE"/>
-                                    <Entry x:Name="Md"      
-                                           Placeholder="0.00"
-                                           HorizontalTextAlignment="Center" 
-                                           VerticalTextAlignment="Center"
-                                           WidthRequest="60"/>
+                                           TextColor="Black"/>
+                            </StackLayout>
 
-                                </StackLayout>
-                            </ViewCell>
-                        </TableSection>
-                    </TableView.Root>
-                </TableView>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout BackgroundColor="#6095bb" Spacing="1" Padding="1" Margin="10,5,10,0" HorizontalOptions="FillAndExpand">
+                    <StackLayout Padding="10" Spacing="0" BackgroundColor="#6095bb">
+                        <Label Text="Momento de diseño" FontAttributes="Bold" TextColor="White" FontSize="14" />
+                    </StackLayout>
+                    <StackLayout Spacing="0" BackgroundColor="White">
+
+                        <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Text="Momento Estático (t-m)" TextColor="Black" HorizontalOptions="FillAndExpand"/>
+                                <Entry x:Name="Me" Placeholder="0.00" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" WidthRequest="60"/>
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Text="Momento de diseño (t-m)" TextColor="Black" HorizontalOptions="FillAndExpand"/>
+                                <Entry x:Name="Md" Placeholder="0.00" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" WidthRequest="60"/>
+                            </StackLayout>
+
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
+
+
                 <!--imagen referencial de armado de viga-->
                 <Image Source="EsqArmado.png"
                        HorizontalOptions="FillAndExpand" 
                        VerticalOptions="FillAndExpand"/>
 
-                <TableView HorizontalOptions="Center" 
-                           VerticalOptions="Center"
-                           BackgroundColor="#215170"
-                           Margin=" 5,0,5,0"
-                           HeightRequest="900">
-                    <TableView.Root >
-                        <!-- Cantidad de acero de refuerzo-->
-                        <TableSection Title="Acero Longitudinal" >
-                            <ViewCell >
-                                <StackLayout Orientation="Horizontal">
-                                    <!--Diametro del refuerzo-->
-                                    <Label Text="Diametro refuerzo"
-                                           TextColor="#E6EBEE"
+
+                <StackLayout BackgroundColor="#6095bb" Spacing="1" Padding="1" Margin="10,5,10,0" HorizontalOptions="FillAndExpand">
+                    <StackLayout Padding="10" Spacing="0" BackgroundColor="#6095bb">
+                        <Label Text="Acero Longitudinal" FontAttributes="Bold" TextColor="White" FontSize="14" />
+                    </StackLayout>
+                    <StackLayout Spacing="0" BackgroundColor="White">
+
+                        <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <!--Diametro del refuerzo-->
+                                <Label Text="Diametro refuerzo"
+                                           TextColor="Black"
                                            VerticalTextAlignment="Center"
-                                           HorizontalTextAlignment="Center"
-                                           WidthRequest="125"/>
-                                    <Entry IsVisible="false"
-                                           x:Name="AuxRebar"/>
-                                    <!--Acero comercial-->
-                                    <Picker  
+                                           HorizontalTextAlignment="Start"
+                                           HorizontalOptions="FillAndExpand"/>
+                                <Picker  
                                         Title="Seleccionar"
-                                        TextColor="#E6EBEE"
+                                        TextColor="Black"
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
                                         x:Name="Ascom"
                                         SelectedIndexChanged="Ascom_SelectedIndexChanged">
-                                        <Picker.ItemsSource >
-                                            <x:Array Type="{x:Type x:String}">
-                                                <x:String>12mm</x:String>
-                                                <x:String>14mm</x:String>
-                                                <x:String>16mm</x:String>
-                                                <x:String>18mm</x:String>
-                                                <x:String>20mm</x:String>
-                                                <x:String>22mm</x:String>
-                                                <x:String>25mm</x:String>
-                                                <x:String>28mm</x:String>
-                                                <x:String>32mm</x:String>
-                                            </x:Array>
-                                        </Picker.ItemsSource>
-                                    </Picker>
-                                    <!--acero minimo-->
-                                    <Label Text="Diametro Estribo"
-                                           TextColor="#E6EBEE"
+                                    <Picker.ItemsSource >
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>12mm</x:String>
+                                            <x:String>14mm</x:String>
+                                            <x:String>16mm</x:String>
+                                            <x:String>18mm</x:String>
+                                            <x:String>20mm</x:String>
+                                            <x:String>22mm</x:String>
+                                            <x:String>25mm</x:String>
+                                            <x:String>28mm</x:String>
+                                            <x:String>32mm</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
+                                </Picker>
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Text="Diametro Estribo"
+                                           TextColor="Black"
                                            VerticalTextAlignment="Center"
-                                           HorizontalTextAlignment="Center"
-                                           WidthRequest="125"/>
-                                    <!--Acero comercial-->
-                                    <Entry IsVisible="false"
-                                           x:Name="AuxEst"/>
-                                    <Picker  
+                                           HorizontalTextAlignment="Start"
+                                           HorizontalOptions="FillAndExpand"/>
+                                <Picker  
                                         Title="Seleccionar"
-                                        TextColor="#E6EBEE"
+                                        TextColor="Black"
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
                                         x:Name="AsEst"
                                         SelectedIndexChanged="AsEst_SelectedIndexChanged">
-                                        <Picker.ItemsSource >
-                                            <x:Array Type="{x:Type x:String}">
-                                                <x:String>10mm</x:String>
-                                                <x:String>12mm</x:String>
-                                                <x:String>14mm</x:String>
-                                            </x:Array>
-                                        </Picker.ItemsSource>
-                                    </Picker>
-                                </StackLayout>
-                            </ViewCell>
-                            <!--Peralte-->
-                            <EntryCell Label="Peralte (d)-cm-" 
-                                       LabelColor="#E6EBEE"
-                                       HorizontalTextAlignment="End" 
-                                       VerticalTextAlignment="End" 
-                                       Placeholder="0.00"
-                                       x:Name="Dv"
-                                       Keyboard="Numeric"
-                                       IsEnabled="False"/>
-                            <ViewCell >
-                                <StackLayout Orientation="Horizontal">
-                                    <!--acero minimo-->
-                                    <Label Text="As min (cm2)"
-                                           TextColor="#E6EBEE"
-                                           VerticalTextAlignment="Center"
-                                           HorizontalTextAlignment="Center"
-                                           WidthRequest="75"/>
-                                    <Entry Placeholder="0.00"
-                                           WidthRequest="50"
-                                           x:Name="Asmin"/>
-                                    <!--acero Total-->
-                                    <Label Text=" As Total (Cm2)"
-                                           TextColor="#E6EBEE"
-                                           VerticalTextAlignment="Center"
-                                           HorizontalTextAlignment="Center"
-                                           WidthRequest="75"/>
-                                    <Entry Placeholder="0.00"
-                                           WidthRequest="50"
-                                            x:Name="Ast"/>
-                                </StackLayout>
-                            </ViewCell>
-                        </TableSection>
-                        <!--Chequeo de separacion de de acero y fisuras-->
-                        <TableSection Title="Separación entre aceros y control de fisuración">
-                            <TextCell  Text="Separación entre aceros (cm)" 
-                                       x:Name="Sep"
-                                       TextColor="#E6EBEE"/>
-                            <TextCell  Text="Separación Máxima (cm)" 
-                                       x:Name="Sepmin"
-                                       TextColor="#E6EBEE"/>
-                            <TextCell  Text="Chequeo de separación" 
-                                       x:Name="ChkSep"
-                                       TextColor="#E6EBEE"/>
-                            <TextCell  Text="Distancia al centro de la varilla (cm)" 
-                                       x:Name="Dc"
-                                       TextColor="#E6EBEE"/>
-                            <TextCell  Text="Control de fisura" 
-                                       x:Name="Fisura"
-                                       TextColor="#E6EBEE"/>
-                        </TableSection>
-                        <TableSection Title="Unidades de refuerzo a colocar">
-                            <TextCell  Text="As (min)" 
-                                       x:Name="Nvarmin"
-                                       TextColor="#E6EBEE"/>
-                            <TextCell Text="As (-)" 
-                                      x:Name="Refuerzo"
-                                      TextColor="#E6EBEE"/>
-                            <TextCell Text="As (+)" 
-                                      x:Name="Rpositivo"
-                                      TextColor="#E6EBEE"/>
-                            <TextCell Text="Area de acero colocada (cm2)"
-                                      TextColor="#E6EBEE"
-                                      x:Name="AscomT"/>
-                        </TableSection>
-                        <TableSection Title="Chequeo de cuantia máxima">
-                            <TextCell Text ="Cuantia colocada (%)"
-                                      x:Name="Ro"
-                                      TextColor="#E6EBEE"/>
-                            <TextCell Text ="Cuantia Maxima Permitida (%)"
-                                      x:Name="Romax"
-                                      TextColor="#E6EBEE"/>
-                            <TextCell Text ="Cuantia colocada (%)"
-                                      x:Name="ChkRo"
-                                      TextColor="#E6EBEE"/>
-                        </TableSection>
-                        <TableSection Title="Momento Resistente">
-                            <TextCell Text ="Momento resistente (t-m)"
-                                      x:Name="MR"
-                                      TextColor="#E6EBEE"/>
-                            <TextCell Text ="Demanda Capacidad D/C"
-                                      x:Name="DC"
-                                      TextColor="#E6EBEE"/>
-                        </TableSection>
+                                    <Picker.ItemsSource >
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>10mm</x:String>
+                                            <x:String>12mm</x:String>
+                                            <x:String>14mm</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
+                                </Picker>
+                            </StackLayout>
 
-                    </TableView.Root>
-                </TableView>
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Text="Peralte (d)-cm-" TextColor="Black" HorizontalOptions="FillAndExpand"/>
+                                <Entry x:Name="Dv" Placeholder="0.00" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" WidthRequest="60" Keyboard="Numeric" IsEnabled="False" />
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Text="As min (cm2)" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand"/>
+                                <Entry Placeholder="0.00" WidthRequest="50" x:Name="Asmin"/>
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Label Text="As Total (Cm2)" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand"/>
+                                <Entry Placeholder="0.00" WidthRequest="50" x:Name="Ast"/>
+                            </StackLayout>
+
+                            <Entry IsVisible="false" x:Name="AuxRebar"/>
+                            <Entry IsVisible="false" x:Name="AuxEst"/>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
+
+                <StackLayout BackgroundColor="#6095bb" Spacing="1" Padding="1" Margin="10,5,10,0" HorizontalOptions="FillAndExpand">
+                    <StackLayout Padding="10" Spacing="0" BackgroundColor="#6095bb">
+                        <Label Text="Separación entre aceros y control de fisuración" FontAttributes="Bold" TextColor="White" MaxLines="1" FontSize="14" />
+                    </StackLayout>
+                    <StackLayout Spacing="0" BackgroundColor="White">
+
+                        <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
+
+                            <Label  Text="Separación entre aceros (cm)"  x:Name="Sep" TextColor="Black"/>
+                            <Label  Text="Separación Máxima (cm)"  x:Name="Sepmin" TextColor="Black"/>
+                            <Label  Text="Chequeo de separación"   x:Name="ChkSep" TextColor="Black"/>
+                            <Label  Text="Distancia al centro de la varilla (cm)"  x:Name="Dc" TextColor="Black"/>
+                            <Label  Text="Control de fisura"  x:Name="Fisura" TextColor="Black"/>
+
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout BackgroundColor="#6095bb" Spacing="1" Padding="1" Margin="10,5,10,0" HorizontalOptions="FillAndExpand">
+                    <StackLayout Padding="10" Spacing="0" BackgroundColor="#6095bb">
+                        <Label Text="Unidades de refuerzo a colocar" FontAttributes="Bold" TextColor="White" MaxLines="1" FontSize="14" />
+                    </StackLayout>
+                    <StackLayout Spacing="0" BackgroundColor="White">
+
+                        <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
+
+                            <Label  Text="As (min)" x:Name="Nvarmin" TextColor="Black"/>
+                            <Label Text="As (-)"  x:Name="Refuerzo" TextColor="Black"/>
+                            <Label Text="As (+)"  x:Name="Rpositivo" TextColor="Black"/>
+                            <Label Text="Area de acero colocada (cm2)" TextColor="Black" x:Name="AscomT"/>
+
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout BackgroundColor="#6095bb" Spacing="1" Padding="1" Margin="10,5,10,0" HorizontalOptions="FillAndExpand">
+                    <StackLayout Padding="10" Spacing="0" BackgroundColor="#6095bb">
+                        <Label Text="Chequeo de cuantia máxima" FontAttributes="Bold" TextColor="White" MaxLines="1" FontSize="14" />
+                    </StackLayout>
+                    <StackLayout Spacing="0" BackgroundColor="White">
+
+                        <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
+
+                            <Label Text ="Cuantia colocada (%)" x:Name="Ro" TextColor="Black"/>
+                            <Label Text ="Cuantia Maxima Permitida (%)" x:Name="Romax" TextColor="Black"/>
+                            <Label Text ="Cuantia colocada (%)" x:Name="ChkRo" TextColor="Black"/>
+
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout BackgroundColor="#6095bb" Spacing="1" Padding="1" Margin="10,5,10,0" HorizontalOptions="FillAndExpand">
+                    <StackLayout Padding="10" Spacing="0" BackgroundColor="#6095bb">
+                        <Label Text="Momento Resistente" FontAttributes="Bold" TextColor="White" MaxLines="1" FontSize="14" />
+                    </StackLayout>
+                    <StackLayout Spacing="0" BackgroundColor="White">
+
+                        <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
+
+                            <Label Text ="Momento resistente (t-m)" x:Name="MR" TextColor="Black"/>
+                            <Label Text ="Demanda Capacidad D/C"  x:Name="DC" TextColor="Black"/>
+
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
             </StackLayout>
 
         </ScrollView>

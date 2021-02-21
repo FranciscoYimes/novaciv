@@ -24,19 +24,10 @@ namespace Novaciv.Hormigon
             int altb1 = 10;
             int altb2 = 15;
             int altb3 = 20;
-            if (item == "40x20x10 (cm)")
-            {
-                hb.Text = altb1.ToString();
 
-            }
-            else if (item == "40x20x15 (cm)")
-            {
-                hb.Text = altb2.ToString();
-            }
-            else if (item == "40x20x20 (cm)")
-            {
-                hb.Text = altb3.ToString();
-            }
+            if (item.Equals("40x20x10 (cm)")) hb.Text = altb1.ToString();
+            else if (item.Equals("40x20x15 (cm)")) hb.Text = altb2.ToString();
+            else if (item.Equals("40x20x20 (cm)")) hb.Text = altb3.ToString();
 
             if (!string.IsNullOrEmpty(Lns.Text) &&
                 !string.IsNullOrEmpty(Lnc.Text) &&

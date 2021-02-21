@@ -173,86 +173,91 @@ namespace Novaciv.Hormigon
         //selection of the dead load
         private void SelectCM_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var item = SelectCM.ItemsSource[SelectCM.SelectedIndex] as string;
+            if (SelectCM.SelectedIndex > -1)
+            {
+                var item = SelectCM.ItemsSource[SelectCM.SelectedIndex] as string;
 
-            if (item.Equals("Losa con Mamposteria liviana"))
-            {
-                CM.IsEnabled = false;
-                CM.Text = string.Format("{0:F2}", 0.57);
-            }
-            else if (item.Equals("Losa con Mamposteria de bloque"))
-            {
-                CM.IsEnabled = false;
-                CM.Text = string.Format("{0:F2}", 0.65);
-            }
-            else if (item.Equals("Losa con mamposteria de ladrillo"))
-            {
-                CM.IsEnabled = false;
-                CM.Text = string.Format("{0:F2}", 0.67);
-            }
-            else if (item.Equals("Losa sin mamposteria"))
-            {
-                CM.IsEnabled = false;
-                CM.Text = string.Format("{0:F2}", 0.55);
-            }
-            else if (item.Equals("Ingresar"))
-            {
-                CM.Placeholder = "Ingrese CM";
-                CM.Text = string.Empty;
-                CM.IsEnabled = true;
-            }
-            if (!string.IsNullOrEmpty(CV.Text))
-            {
-                CV_Completed(sender, e);
+                if (item.Equals("Losa con Mamposteria liviana"))
+                {
+                    CM.IsEnabled = false;
+                    CM.Text = string.Format("{0:F2}", 0.57);
+                }
+                else if (item.Equals("Losa con Mamposteria de bloque"))
+                {
+                    CM.IsEnabled = false;
+                    CM.Text = string.Format("{0:F2}", 0.65);
+                }
+                else if (item.Equals("Losa con mamposteria de ladrillo"))
+                {
+                    CM.IsEnabled = false;
+                    CM.Text = string.Format("{0:F2}", 0.67);
+                }
+                else if (item.Equals("Losa sin mamposteria"))
+                {
+                    CM.IsEnabled = false;
+                    CM.Text = string.Format("{0:F2}", 0.55);
+                }
+                else if (item.Equals("Ingresar"))
+                {
+                    CM.Placeholder = "Ingrese CM";
+                    CM.Text = string.Empty;
+                    CM.IsEnabled = true;
+                }
+                if (!string.IsNullOrEmpty(CV.Text))
+                {
+                    CV_Completed(sender, e);
+                }
             }
         }
 
         //selection of the live load
         private void SelectCV_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var item = SelectCV.ItemsSource[SelectCV.SelectedIndex] as string;
+            if (SelectCV.SelectedIndex > -1)
+            {
+                var item = SelectCV.ItemsSource[SelectCV.SelectedIndex] as string;
 
-            if (item.Equals("Vivienda"))
-            {
-                CV.IsEnabled = false;
-                CV.Text = string.Format("{0:F2}", 0.20);
+                if (item.Equals("Vivienda"))
+                {
+                    CV.IsEnabled = false;
+                    CV.Text = string.Format("{0:F2}", 0.20);
+                }
+                else if (item.Equals("Almacenes"))
+                {
+                    CV.IsEnabled = false;
+                    CV.Text = string.Format("{0:F2}", 0.48);
+                }
+                else if (item.Equals("Bibliotecas"))
+                {
+                    CV.IsEnabled = false;
+                    CV.Text = string.Format("{0:F2}", 0.72);
+                }
+                else if (item.Equals("Oficinas"))
+                {
+                    CV.IsEnabled = false;
+                    CV.Text = string.Format("{0:F2}", 0.25);
+                }
+                else if (item.Equals("Graderios"))
+                {
+                    CV.IsEnabled = false;
+                    CV.Text = string.Format("{0:F2}", 0.48);
+                }
+                else if (item.Equals("Aulas"))
+                {
+                    CV.IsEnabled = false;
+                    CV.Text = string.Format("{0:F2}", 0.20);
+                }
+                else if (item.Equals("Ingresar"))
+                {
+                    CV.Text = string.Empty;
+                    CV.Placeholder = "Ingrese CV";
+                    CV.IsEnabled = true;
+                }
+                if (!string.IsNullOrEmpty(CM.Text))
+                {
+                    CV_Completed(sender, e);
+                }
             }
-            else if (item.Equals("Almacenes"))
-            {
-                CV.IsEnabled = false;
-                CV.Text = string.Format("{0:F2}", 0.48);
-            }
-            else if (item.Equals("Bibliotecas"))
-            {
-                CV.IsEnabled = false;
-                CV.Text = string.Format("{0:F2}", 0.72);
-            }
-            else if (item.Equals("Oficinas"))
-            {
-                CV.IsEnabled = false;
-                CV.Text = string.Format("{0:F2}", 0.25);
-            }
-            else if (item.Equals("Graderios"))
-            {
-                CV.IsEnabled = false;
-                CV.Text = string.Format("{0:F2}", 0.48);
-            }
-            else if (item.Equals("Aulas"))
-            {
-                CV.IsEnabled = false;
-                CV.Text = string.Format("{0:F2}", 0.20);
-            }
-            else if (item.Equals("Ingresar"))
-            {
-                CV.Text = string.Empty;
-                CV.Placeholder = "Ingrese CV";
-                CV.IsEnabled = true;
-            }
-            if (!string.IsNullOrEmpty(CM.Text))
-            {
-                CV_Completed(sender, e);
-            }
-
         }
 
         //calculated the factored load
@@ -574,6 +579,51 @@ namespace Novaciv.Hormigon
             if (Ascom.SelectedIndex != 0)
             { Ascom_SelectedIndexChanged(sender, e); }
 
+        }
+
+        void LimpiarButton_Clicked(System.Object sender, System.EventArgs e)
+        {
+            L1.Text = String.Empty;
+            Lt1.Text = String.Empty;
+            Lt2.Text = String.Empty;
+            Np.Text = String.Empty;
+
+            Col.IsToggled = false;
+            Bcol.Text = String.Empty;
+            lv.Text = String.Empty;
+
+            SelectCM.SelectedIndex = -1;
+            CM.Text = String.Empty;
+
+            SelectCV.SelectedIndex = -1;
+            CV.Text = String.Empty;
+            CU.Text = String.Empty;
+
+            Fc.Text = "210";
+            Fy.Text = "4200";
+
+            Chkbeam.Text = "chequeo";
+            Chkbeam.TextColor = Color.Black;
+
+            Sism.SelectedIndex = -1;
+
+            pb.Text = String.Empty;
+            pm.Text = String.Empty;
+
+            Bv.Text = String.Empty;
+            Rec.Text = String.Empty;
+            Hv.Text = String.Empty;
+            Beamh.IsToggled = false;
+            hb.Text = String.Empty;
+
+            Me.Text = String.Empty;
+            Md.Text = String.Empty;
+
+            Ascom.SelectedIndex = -1;
+            AsEst.SelectedIndex = -1;
+            Dv.Text = String.Empty;
+            Asmin.Text = String.Empty;
+            Ast.Text = String.Empty;
         }
     }
 }

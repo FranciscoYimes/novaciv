@@ -8,6 +8,8 @@
         <ScrollView>
             <StackLayout BackgroundColor="White">
 
+                <Button Text="Limpiar" Clicked="LimpiarButton_Clicked" BackgroundColor="#264c76" TextColor="White" Margin="10" CornerRadius="5" HorizontalOptions="FillAndExpand" HeightRequest="35" />
+
                 <!-- imagen de referencia-->
                 <Image Source="pnlcrit.png"/>
 

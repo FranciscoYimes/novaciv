@@ -19,21 +19,24 @@ namespace Novaciv.Hormigon
 
         private void Aliv_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Altura del alivianamiento
-            var item = Aliv.ItemsSource[Aliv.SelectedIndex] as string;
-            int altb1 = 10;
-            int altb2 = 15;
-            int altb3 = 20;
 
-            if (item.Equals("40x20x10 (cm)")) hb.Text = altb1.ToString();
-            else if (item.Equals("40x20x15 (cm)")) hb.Text = altb2.ToString();
-            else if (item.Equals("40x20x20 (cm)")) hb.Text = altb3.ToString();
 
             if (!string.IsNullOrEmpty(Lns.Text) &&
                 !string.IsNullOrEmpty(Lnc.Text) &&
                 !string.IsNullOrEmpty(Bn.Text) &&
-                !string.IsNullOrEmpty(Tc.Text))
+                !string.IsNullOrEmpty(Tc.Text) &&
+                Aliv.SelectedIndex > -1)
             {
+                //Altura del alivianamiento
+                var item = Aliv.ItemsSource[Aliv.SelectedIndex] as string;
+                int altb1 = 10;
+                int altb2 = 15;
+                int altb3 = 20;
+
+                if (item.Equals("40x20x10 (cm)")) hb.Text = altb1.ToString();
+                else if (item.Equals("40x20x15 (cm)")) hb.Text = altb2.ToString();
+                else if (item.Equals("40x20x20 (cm)")) hb.Text = altb3.ToString();
+
                 //altura de loseta y altura de losa alivianda
                 double loseta = double.Parse(Tc.Text);
                 var hbloq = double.Parse(hb.Text);
@@ -154,8 +157,7 @@ namespace Novaciv.Hormigon
             }
 
             Mampost_SelectedIndexChanged(sender, e);
-            if (Mampost.SelectedIndex == 4 &&
-                !string.IsNullOrEmpty(Wlosa.Text))
+            if (Mampost.SelectedIndex == 4 && !string.IsNullOrEmpty(Wlosa.Text))
             {
                 WMampost_Completed(sender, e);
             }
@@ -202,6 +204,35 @@ namespace Novaciv.Hormigon
             double wlosa = double.Parse(Wlosa.Text);
             double wtotal = wmampost + wlosa;
             Wtotal.Text = wtotal.ToString("F2");
+        }
+
+        void LimpiarButton_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Lns.Text = String.Empty;
+            Lnc.Text = String.Empty;
+            Aliv.SelectedIndex = -1;
+            hb.Text = String.Empty;
+            chknerv.Text = "Chequeo nervio";
+            chklos.Text = "Chequeo de loseta";
+            chkiner.Text = "Chequeo inercia";
+
+            chknerv.TextColor = Color.Black;
+            chklos.TextColor = Color.Black;
+            chkiner.TextColor = Color.Black;
+
+            lcalc.Text = "0.00";
+            hl.Text = "0.00";
+            inerl.Text = "0.00";
+
+            h.Text = "0.00";
+            ila.Text = "inercia (cm4)";
+            heq.Text = "0.00";
+
+            Wlosa.Text = "0.00";
+            WMampost.Text = "0.00";
+            Wtotal.Text = "0.00";
+
+            Mampost.SelectedIndex = -1;
         }
     }
 }

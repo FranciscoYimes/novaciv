@@ -7,6 +7,8 @@
         <ScrollView>
             <StackLayout BackgroundColor="White">
 
+                <Button Text="Limpiar" Clicked="LimpiarButton_Clicked" BackgroundColor="#264c76" TextColor="White" Margin="10" CornerRadius="5" HorizontalOptions="FillAndExpand" HeightRequest="35" />
+
                 <StackLayout BackgroundColor="#6095bb" Spacing="1" Padding="1" Margin="10,10,10,0" HorizontalOptions="FillAndExpand">
                     <StackLayout Padding="10" Spacing="0" BackgroundColor="#6095bb">
                         <Label Text="Panel crítico" FontAttributes="Bold" TextColor="White" FontSize="14" />
@@ -282,12 +284,13 @@
                                             x:Name="hb"
                                             Keyboard="Numeric"/>
                                 <!--chequeo de seccion h/b-->
-                                <Label HorizontalTextAlignment="Center"  
+
+                            </StackLayout>
+                            <Label HorizontalTextAlignment="Start"  
                                            VerticalTextAlignment="Center"
                                            Text="chequeo"
                                            x:Name="Chkbeam"
                                            TextColor="Black"/>
-                            </StackLayout>
 
                         </StackLayout>
                     </StackLayout>

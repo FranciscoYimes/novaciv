@@ -129,12 +129,14 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\Novaciv\Novaciv.csproj">
-      <Project>{2142A9F2-EDBB-4E8E-9A35-EA4355B70085}</Project>
+      <Project>{DAAAC3E7-76D8-4BE2-BD7E-2DE5F9419967}</Project>
       <Name>Novaciv</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\dlosaliv.png" />
+    <BundleResource Include="Resources\losa.png" />
+    <BundleResource Include="Resources\viga.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Esqbeam.png" />

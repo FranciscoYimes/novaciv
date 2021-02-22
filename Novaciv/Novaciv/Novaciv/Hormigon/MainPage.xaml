@@ -8,7 +8,8 @@
                     <TapGestureRecognizer Tapped="Losa_Tapped"/>
                 </Frame.GestureRecognizers>
                 <StackLayout Orientation="Horizontal" Padding="20">
-                    <Label Margin="10" Text="Prediseño de Losas" TextColor="White" FontSize="16" FontAttributes="Bold" />
+                    <Image Source="losa" HeightRequest="50" />
+                    <Label Margin="10" Text="Prediseño de Losas" TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center" />
                 </StackLayout>
             </Frame>
 
@@ -17,7 +18,8 @@
                     <TapGestureRecognizer Tapped="Viga_Tapped"/>
                 </Frame.GestureRecognizers>
                 <StackLayout Orientation="Horizontal" Padding="20">
-                    <Label Margin="10" Text="Prediseño de Vigas" TextColor="White" FontSize="16" FontAttributes="Bold" />
+                    <Image Source="viga" HeightRequest="50" />
+                    <Label Margin="10" Text="Prediseño de Vigas" TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center" />
                 </StackLayout>
             </Frame>
 

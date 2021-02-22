@@ -19,7 +19,7 @@
                     </StackLayout>
                     <StackLayout Spacing="0" BackgroundColor="White">
                         <StackLayout Padding="10" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                            <Label Text="Longitud larga (Ls)-m-" FontSize=" 15" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                            <Label TextColor="Black" Text="Longitud larga (Ls)-m-" FontSize=" 15" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
                             <Entry Placeholder="0.00"  x:Name="Lns" Keyboard="Numeric" WidthRequest="60" VerticalOptions="Center"/>
                         </StackLayout>
                         <StackLayout  Padding="10" Orientation="Horizontal" HorizontalOptions="FillAndExpand">

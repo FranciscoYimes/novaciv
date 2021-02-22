@@ -10,8 +10,8 @@ namespace Novaciv
         {
             InitializeComponent();
 
-            if (Device.RuntimePlatform == Device.iOS) MainPage = new NavigationPage(new Hormigon.MainPage());
-            else MainPage = new Hormigon.MainPage();
+            MainPage = new NavigationPage(new Hormigon.MainPage());
+            //else MainPage = new Hormigon.MainPage();
         }
 
         protected override void OnStart()

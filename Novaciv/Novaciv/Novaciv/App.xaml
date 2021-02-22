@@ -15,6 +15,18 @@
                 <Setter Property="BarBackgroundColor" Value="{StaticResource Primary}" />
                 <Setter Property="BarTextColor" Value="White" />
             </Style>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+
+            <Style TargetType="Entry">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="PlaceholderColor" Value="#666666"/>
+            </Style>
+            <Style TargetType="Picker">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="TitleColor" Value="#666666"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
